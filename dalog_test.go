@@ -7,10 +7,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestLog(t *testing.T) {
+func TestDaLog(t *testing.T) {
 	//create a file
 	f, err := os.CreateTemp(".", "tempfile_***")
 	require.NoError(t, err)
+	defer os.ReadFile(f.Name())
+
 	//bytes to be written
 	data := []byte("hello wolrd")
 	width := len(data) + RecordLength
