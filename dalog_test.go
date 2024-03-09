@@ -11,8 +11,7 @@ func TestDaLog(t *testing.T) {
 	//create a file
 	f, err := os.CreateTemp(".", "tempfile_***")
 	require.NoError(t, err)
-	defer os.ReadFile(f.Name())
-
+	defer os.Remove(f.Name())
 	//bytes to be written
 	data := []byte("hello wolrd")
 	width := len(data) + RecordLength
